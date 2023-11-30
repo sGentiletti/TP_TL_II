@@ -1,6 +1,5 @@
 import java.util.Arrays;
 import java.util.List;
-
 import game.components.Monster;
 import game.components.RumbleGame;
 import game.monsters.EvilBeast;
