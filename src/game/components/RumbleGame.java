@@ -120,10 +120,7 @@ public class RumbleGame {
 			throw new RoundException();
 			
 		}
-		if (!playerOne.getCastle().getEastPath().haveMonster(playerOne.getId())
-				&& !playerOne.getCastle().getWestPath().haveMonster(playerOne.getId())
-				&& !playerTwo.getCastle().getEastPath().haveMonster(playerTwo.getId())
-				&& !playerTwo.getCastle().getWestPath().haveMonster(playerTwo.getId())) {
+		if (playerOne.isRemainingMonsters() && playerTwo.isRemainingMonsters()) {
 			loopGame = false;
 			throw new DrawException();
 		}
