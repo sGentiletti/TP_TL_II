@@ -1,5 +1,8 @@
 package game.components;
 
+
+
+import entregable.VentanaPopup;
 import game.random.RandomGenerator;
 
 public class RumbleGame {
@@ -10,6 +13,8 @@ public class RumbleGame {
     private boolean loopGame = true;
     private int round = 0;
     private SegundaEvaluacionUI segundaEvaluacionUI;
+    
+    private String messageFinal = " ";
 
     public static RumbleGame getInstance() {
         return instance;
@@ -103,11 +108,13 @@ public class RumbleGame {
         segundaEvaluacionUI.refresh();
         round++;
         if(playerOne.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Azul!!!         ****");
+        	messageFinal = "****         Ganador el Jugador Azul!!!         ****";
+          //  System.out.println("****         Ganador el Jugador Azul!!!         ****");
             loopGame = false;
         }
         if(playerTwo.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Rojo!!!         ****");
+        	messageFinal = "****         Ganador el Jugador Rojo!!!         ****";
+            //System.out.println("****         Ganador el Jugador Rojo!!!         ****");
             loopGame = false;
         }
         if(round == 100) {
@@ -126,6 +133,9 @@ public class RumbleGame {
         }
         //TODO: Colocar una ventana modal con un mensaje que indique el resultado
 
-        System.exit(0);
+        VentanaPopup ven = new VentanaPopup(messageFinal);
+        
+        //System.exit(0);
+
     }
 }
