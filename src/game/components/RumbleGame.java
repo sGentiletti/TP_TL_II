@@ -107,20 +107,18 @@ public class RumbleGame {
 		round++;
 		if (playerOne.getCastle().getCastleLife() <= 0) {
 			messageFinal = "****         Ganador el Jugador Azul!!!         ****";
-			// System.out.println("**** Ganador el Jugador Azul!!! ****");
 			loopGame = false;
 		}
 		if (playerTwo.getCastle().getCastleLife() <= 0) {
 			messageFinal = "****         Ganador el Jugador Rojo!!!         ****";
-			// System.out.println("**** Ganador el Jugador Rojo!!! ****");
 			loopGame = false;
 		}
 		if (round == 100) {
 			loopGame = false;
 			throw new RoundException();
-			
+
 		}
-		if (playerOne.isRemainingMonsters() && playerTwo.isRemainingMonsters()) {
+		if (playerOne.isRemainingMonsters() && playerTwo.isRemainingMonsters() && loopGame) {
 			loopGame = false;
 			throw new DrawException();
 		}
@@ -134,17 +132,13 @@ public class RumbleGame {
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
 			} catch (DrawException e) {
-				// TODO: Colocar una ventana de Empate
 				messageFinal = "****       Al acabarse los monstrous, Hubo EMPATE    ****";
-			} catch(RoundException e) {
+			} catch (RoundException e) {
 				messageFinal = "****       Al acabarse la ronda, Hubo EMPATE    ****";
 			}
 		}
-		// TODO: Colocar una ventana modal con un mensaje que indique el resultado
 
-		VentanaPopup ven = new VentanaPopup(messageFinal);
-
-		// System.exit(0);
+		new VentanaPopup(messageFinal);
 
 	}
 }

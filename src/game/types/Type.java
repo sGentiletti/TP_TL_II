@@ -9,6 +9,6 @@ public enum Type {
     PLANT,
     ELECTRIC,
     WATER,
-    INSECT,
+    FLYING,
     DRAGON,
 }
