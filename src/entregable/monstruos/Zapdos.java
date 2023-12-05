@@ -26,7 +26,7 @@ public class Zapdos extends Monster {
 
 		if (monster.getActiveSkill() instanceof Electric) {
 			this.life = this.life + damage;
-			System.out.println(this + " recargo energia! Ahora tiene" + this.life + " puntos de vida");
+			System.out.println(this + " recargo energia! Ahora tiene " + this.life + " puntos de vida");
 
 		} else {
 			this.life = this.life - damage;
@@ -41,11 +41,18 @@ public class Zapdos extends Monster {
 	@Override
 	public void attack(Monster monster) {
 		monster.onDamageReceive(this.activeSkill.damage(monster), this);
+		changeActiveSkill();
 	}
 
 	@Override
 	public void move(PathBox oldPathBox, PathBox newPathBox) {
 		super.move(oldPathBox, newPathBox);
+		changeActiveSkill();
+	}
+
+	private void changeActiveSkill() {
 		this.activeSkill = skills.get(random.nextInt(3));
+		System.out.println(
+				this + " prepara " + this.activeSkill.getClass().getSimpleName() + " para su siguiente ataque");
 	}
 }

@@ -10,7 +10,7 @@ public class ThunderShock implements Electric {
 
 	@Override
 	public int damage(Monster monster) {
-		int damage = RandomGenerator.getInstance().calculateDamage(60, 150);
+		int damage = RandomGenerator.getInstance().calculateDamage(60, 250);
 		List<Type> monsterType = monster.getTypes();
 
 		if (monsterType.contains(Type.WATER) || monsterType.contains(Type.SWORD)) {

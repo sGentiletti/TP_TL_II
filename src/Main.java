@@ -21,7 +21,7 @@ public class Main {
 		// TODO ordenar el listado de monstruos que recibe el jugador uno
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
-		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan 2"), new ThornyFlora("ThornyFlora 2"),
+		List<Monster> monstersTwo = Arrays.asList(new Zapdos("Zapdos 3"), new Zapdos("Zapdos 4"), new Spartan("Spartan 2"), new ThornyFlora("ThornyFlora 2"),
 				new FuryFish("FuryFish 2"));
 
 		// TODO ordenar el listado de monstruos que recibe el jugador dos

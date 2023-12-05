@@ -10,7 +10,7 @@ public class RazorLeaf implements Plant {
 
 	@Override
 	public int damage(Monster monster) {
-		int damage = RandomGenerator.getInstance().calculateDamage(50, 130);
+		int damage = RandomGenerator.getInstance().calculateDamage(50, 200);
 		List<Type> monsterType = monster.getTypes();
 
 		if (monsterType.contains(Type.WATER)) {
