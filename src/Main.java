@@ -20,33 +20,20 @@ public class Main {
 
 		// TODO ordenar el listado de monstruos que recibe el jugador uno
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
-		// creamos 3 indices uno para cada lista
-		int i = 0, j = 0, k = 0;
+		
 		// creamos tres listas cada una con un criterio de orden distinto
 		List<Monster> monstersReorderedLife = new ArrayList<>();
-		List<Monster> monstersReorderedTypes = new ArrayList<>();
-		List<Monster> monstersReorderedAttacks = new ArrayList<>();
+		//List<Monster> monstersReorderedTypes = new ArrayList<>();
+		//List<Monster> monstersReorderedAttacks = new ArrayList<>();
+		
 		for (Monster monster : monstersOne) {
-			if (!monstersReorderedLife.isEmpty()) {
-				while (monstersReorderedLife.get(i).getLife() > monster.getLife() && i < monstersReorderedLife.size()) {
-					i++;
-				}
-				// preguntar por el criterio para el orden de la cantidad de daño  y el orden por el tipo de monstruo
-				/*
-				while (monstersReorderedAttacks.get(j).getAttack() > monster.getAttack()
-						&& j < monstersReorderedAttacks.size()) {
-					j++;
-				}
-				while (monstersReorderedTypes.get(k).getTypes() > monster.getTypes()
-						&& k < monstersReorderedTypes.size()) {
-					k++;
-				}
-				*/
-			}
-			monstersReorderedLife.add(monster);
-			// monstersReorderedTypes.add(monster);
-			// monstersReorderedAttack.add(monster);
+			System.out.println(monster.toString());
 		}
+		// Arrays.sort(monstersOne, );
+		for (Monster monster : monstersOne) {
+			System.out.println(monster.toString());
+		}
+		
 
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
 
