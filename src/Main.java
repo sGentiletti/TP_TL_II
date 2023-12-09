@@ -1,6 +1,7 @@
 import java.util.*;
 import game.components.*;
 import game.monsters.*;
+
 public class Main {
 	public static void main(String[] args) {
 		RumbleGame rumbleGame = RumbleGame.getInstance();
@@ -14,48 +15,35 @@ public class Main {
 				new Spartan("Spartan 15"));
 
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
-		
-		for(Monster monster: monstersOne) {
-			System.out.println(monster.toString());
-			//System.out.println(monster.activeSkill.Damage);
-		}
-		System.out.println("-----------------------------");
+
+		extracted(monstersOne);
 		// ordenar Monstruos por cantidad de vida
-		Collections.sort(monstersOne, new ComparatorLife() );
-		for(Monster monster: monstersOne) {
-			System.out.println(monster.toString());
-		}
-		System.out.println("-----------------------------");
+		Collections.sort(monstersOne, new ComparatorLife());
+		extracted(monstersOne);
 		// ordenar Monstruos por Daño del ataque
 		Collections.sort(monstersOne, new ComparatorAttack());
-		for(Monster monster: monstersOne) {
-			System.out.println(monster.toString());
-		}
-		System.out.println("-----------------------------");
-		
+		extracted(monstersOne);
+
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
-		
-		
-		for(Monster monster: monstersTwo) {
-			System.out.println(monster.toString());
-		}
-		System.out.println("-----------------------------");
+
+		extracted(monstersTwo);
 		// ordenar Monstruos por cantidad de vida
-		Collections.sort(monstersTwo, new ComparatorLife() );
-		for(Monster monster: monstersTwo) {
-			System.out.println(monster.toString());
-		}
-		System.out.println("-----------------------------");
+		Collections.sort(monstersTwo, new ComparatorLife());
+		extracted(monstersTwo);
 		// ordenar Monstruos por Daño del ataque
 		Collections.sort(monstersTwo, new ComparatorAttack());
-		for(Monster monster: monstersTwo) {
-			System.out.println(monster.toString());
-		}
-		System.out.println("-----------------------------");
-		
-		
+		extracted(monstersTwo);
+
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
+	}
+
+	private static void extracted(List<Monster> monsters) {
+		for (Monster monster : monsters) {
+			System.out.println(monster.toString());
+			System.out.println(monster.getLife());
+		}
+		System.out.println("-----------------------------");
 	}
 }
