@@ -1,11 +1,6 @@
-import java.util.Arrays;
-import java.util.List;
-import game.components.Monster;
-import game.components.RumbleGame;
-import game.monsters.EvilBeast;
-import game.monsters.IceBeast;
-import game.monsters.Spartan;
-
+import java.util.*;
+import game.components.*;
+import game.monsters.*;
 public class Main {
 	public static void main(String[] args) {
 		RumbleGame rumbleGame = RumbleGame.getInstance();
@@ -18,27 +13,47 @@ public class Main {
 				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
 				new Spartan("Spartan 15"));
 
-		// TODO ordenar el listado de monstruos que recibe el jugador uno
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 		
-		// creamos tres listas cada una con un criterio de orden distinto
-		List<Monster> monstersReorderedLife = new ArrayList<>();
-		//List<Monster> monstersReorderedTypes = new ArrayList<>();
-		//List<Monster> monstersReorderedAttacks = new ArrayList<>();
-		
-		for (Monster monster : monstersOne) {
+		for(Monster monster: monstersOne) {
+			System.out.println(monster.toString());
+			//System.out.println(monster.activeSkill.Damage);
+		}
+		System.out.println("-----------------------------");
+		// ordenar Monstruos por cantidad de vida
+		Collections.sort(monstersOne, new ComparatorLife() );
+		for(Monster monster: monstersOne) {
 			System.out.println(monster.toString());
 		}
-		// Arrays.sort(monstersOne, );
-		for (Monster monster : monstersOne) {
+		System.out.println("-----------------------------");
+		// ordenar Monstruos por Daño del ataque
+		Collections.sort(monstersOne, new ComparatorAttack());
+		for(Monster monster: monstersOne) {
 			System.out.println(monster.toString());
 		}
+		System.out.println("-----------------------------");
 		
-
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
-
-		// TODO ordenar el listado de monstruos que recibe el jugador dos
-
+		
+		
+		for(Monster monster: monstersTwo) {
+			System.out.println(monster.toString());
+		}
+		System.out.println("-----------------------------");
+		// ordenar Monstruos por cantidad de vida
+		Collections.sort(monstersTwo, new ComparatorLife() );
+		for(Monster monster: monstersTwo) {
+			System.out.println(monster.toString());
+		}
+		System.out.println("-----------------------------");
+		// ordenar Monstruos por Daño del ataque
+		Collections.sort(monstersTwo, new ComparatorAttack());
+		for(Monster monster: monstersTwo) {
+			System.out.println(monster.toString());
+		}
+		System.out.println("-----------------------------");
+		
+		
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
