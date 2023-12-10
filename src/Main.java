@@ -15,32 +15,50 @@ public class Main {
 				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
 				new Spartan("Spartan 15"));
 
-		Random random = new Random();
+		// creamos dos random porque sino, se establece el mismo criterio de orden para ambos jugadores
+		Random random1 = new Random();
+		Random random  = new Random();
+		
 		
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 		
 		mostrarTodosLosOrdenes(monstersOne);
+
+		System.out.println("Orden Jugador 1:");
 		
 		seleccionarOrdenRandom(random, monstersOne);
-		
+
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
 
 		mostrarTodosLosOrdenes(monstersTwo);
 
-		seleccionarOrdenRandom(random, monstersTwo);
-		
+		System.out.println("Orden Jugador 2:");
+
+		seleccionarOrdenRandom(random1, monstersTwo);
+
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
 	}
 
 	private static List<Monster> seleccionarOrdenRandom(Random random, List<Monster> monsters) {
-		int value = random.nextInt((3 - 1 ) + 1) + 1;
-		
-		switch (value){
-			case 1: Collections.sort(monsters, new ComparatorLife());
-			case 2: Collections.sort(monsters, new ComparatorAttack());
-			case 3: Collections.sort(monsters, new ComparatorName());
+		int value = random.nextInt(4);
+		switch (value) {
+		case 1:
+			Collections.sort(monsters, new ComparatorLife());
+			System.out.println(" Se establece Orden por vida");
+			break;
+		case 2:
+			Collections.sort(monsters, new ComparatorAttack());
+			System.out.println(" Se establece Orden por mayor daño de ataque");
+			break;
+		case 3:
+			Collections.sort(monsters, new ComparatorName());
+			System.out.println("Se Establece Orden por nombre");
+			break;
+		default:
+			System.out.println("no se establece un orden, queda como llegaron");
+			break;
 		}
 		return monsters;
 	}
