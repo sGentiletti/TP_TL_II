@@ -15,17 +15,34 @@ public class Main {
 				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
 				new Spartan("Spartan 15"));
 
+		Random random = new Random();
+		
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
-
+		
 		mostrarTodosLosOrdenes(monstersOne);
-
+		
+		seleccionarOrdenRandom(random, monstersOne);
+		
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
 
 		mostrarTodosLosOrdenes(monstersTwo);
 
+		seleccionarOrdenRandom(random, monstersTwo);
+		
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
+	}
+
+	private static List<Monster> seleccionarOrdenRandom(Random random, List<Monster> monsters) {
+		int value = random.nextInt((3 - 1 ) + 1) + 1;
+		
+		switch (value){
+			case 1: Collections.sort(monsters, new ComparatorLife());
+			case 2: Collections.sort(monsters, new ComparatorAttack());
+			case 3: Collections.sort(monsters, new ComparatorName());
+		}
+		return monsters;
 	}
 
 	private static void mostrarTodosLosOrdenes(List<Monster> monsters) {
@@ -41,7 +58,7 @@ public class Main {
 		mostrarListaDeMonstruos(monsters);
 
 		System.out.println("Monstruos por nombre \n");
-		Collections.sort(monsters, new ComparatorPorNombre());
+		Collections.sort(monsters, new ComparatorName());
 		mostrarListaDeMonstruos(monsters);
 	}
 
