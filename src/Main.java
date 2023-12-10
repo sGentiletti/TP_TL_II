@@ -1,6 +1,7 @@
 import java.util.*;
 import game.components.*;
 import game.monsters.*;
+import game.components.comparators.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -16,33 +17,39 @@ public class Main {
 
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
-		extracted(monstersOne);
-		// ordenar Monstruos por cantidad de vida
-		Collections.sort(monstersOne, new ComparatorLife());
-		extracted(monstersOne);
-		// ordenar Monstruos por Daño del ataque
-		Collections.sort(monstersOne, new ComparatorAttack());
-		extracted(monstersOne);
+		mostrarTodosLosOrdenes(monstersOne);
 
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
 
-		extracted(monstersTwo);
-		// ordenar Monstruos por cantidad de vida
-		Collections.sort(monstersTwo, new ComparatorLife());
-		extracted(monstersTwo);
-		// ordenar Monstruos por Daño del ataque
-		Collections.sort(monstersTwo, new ComparatorAttack());
-		extracted(monstersTwo);
+		mostrarTodosLosOrdenes(monstersTwo);
 
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
 	}
 
-	private static void extracted(List<Monster> monsters) {
+	private static void mostrarTodosLosOrdenes(List<Monster> monsters) {
+		System.out.println("Monstruos sin Orden \n");
+		mostrarListaDeMonstruos(monsters);
+
+		System.out.println("Monstruos por vida");
+		Collections.sort(monsters, new ComparatorLife());
+		mostrarListaDeMonstruos(monsters);
+
+		System.out.println("Monstruos por cantidad de daño \n");
+		Collections.sort(monsters, new ComparatorAttack());
+		mostrarListaDeMonstruos(monsters);
+
+		System.out.println("Monstruos por nombre \n");
+		Collections.sort(monsters, new ComparatorPorNombre());
+		mostrarListaDeMonstruos(monsters);
+	}
+
+	private static void mostrarListaDeMonstruos(List<Monster> monsters) {
 		for (Monster monster : monsters) {
-			System.out.println(monster.toString());
+			System.out.println(monster.getMonsterName());
 			System.out.println(monster.getLife());
+			System.out.println(monster.getActiveSkill().damage(monster));
 		}
 		System.out.println("-----------------------------");
 	}
