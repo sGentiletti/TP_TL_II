@@ -15,8 +15,7 @@ public class IceBeast extends Monster {
     private List<Cold> skills = Arrays.asList(new ColdBreath(), new IceSpike());
 
     public IceBeast(String name) {
-        this.life = 200;
-        this.monsterName = name;
+    	super(200, name);
         this.activeSkill = skills.get(0);
         this.types = Arrays.asList(Type.COLD, Type.BEAST);
     }

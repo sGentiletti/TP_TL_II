@@ -14,11 +14,17 @@ public class Main {
 				new IceBeast("Ice Beast"), new Spartan("Spartan 24"), new Spartan("Spartan 224"),
 				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
 				new Spartan("Spartan 15"));
-
-		// creamos dos random porque sino, se establece el mismo criterio de orden para ambos jugadores
+/*
+ * CREAMOS DOS VARIABLES RANDOM,
+ * UNA PARA CADA EQUIPO
+ */
 		Random random1 = new Random();
 		Random random  = new Random();
-		
+/*
+ * EN AMBOS EQUIPOS
+ * MOSTRAMOS TODOS LOS ORDENES,
+ * SELECCIONAMOS UN ORDEN ALEATORIO Y LO DEJAMOS ESTABLECIDO.		
+ */
 		
 		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 		
@@ -35,6 +41,9 @@ public class Main {
 		System.out.println("Orden Jugador 2:");
 
 		seleccionarOrdenRandom(random1, monstersTwo);
+		/*
+		 * A PARTIR DE ACA COMIENZA EL JUEGO
+		 */
 
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
@@ -84,7 +93,7 @@ public class Main {
 		for (Monster monster : monsters) {
 			System.out.println(monster.getMonsterName());
 			System.out.println(monster.getLife());
-			System.out.println(monster.getActiveSkill().damage(monster));
+			System.out.println(monster.getInicialDamage());
 		}
 		System.out.println("-----------------------------");
 	}

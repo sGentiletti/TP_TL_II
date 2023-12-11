@@ -9,9 +9,8 @@ import game.types.Type;
 public class Spartan extends Monster {
 
     public Spartan(String name) {
-        this.life = 500;
+    	super(500, name);
         this.activeSkill = new Slice();
-        this.monsterName = name;
         this.types = Arrays.asList(Type.SWORD);
     }
 
