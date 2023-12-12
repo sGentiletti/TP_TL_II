@@ -1,131 +1,144 @@
 package game.components;
 
+import entregable.VentanaPopup;
 import game.random.RandomGenerator;
 
 public class RumbleGame {
 
-    private static RumbleGame instance = new RumbleGame();
-    private Player playerOne;
-    private Player playerTwo;
-    private boolean loopGame = true;
-    private int round = 0;
-    private SegundaEvaluacionUI segundaEvaluacionUI;
+	private static RumbleGame instance = new RumbleGame();
+	private Player playerOne;
+	private Player playerTwo;
+	private boolean loopGame = true;
+	private int round = 0;
+	private SegundaEvaluacionUI segundaEvaluacionUI;
 
-    public static RumbleGame getInstance() {
-        return instance;
-    }
+	private String messageFinal = " ";
 
-    public Player getPlayerOne() {
-        return playerOne;
-    }
+	public static RumbleGame getInstance() {
+		return instance;
+	}
 
-    public Player getPlayerTwo() {
-        return playerTwo;
-    }
+	public Player getPlayerOne() {
+		return playerOne;
+	}
 
-    private RumbleGame() {
+	public Player getPlayerTwo() {
+		return playerTwo;
+	}
 
-    }
+	private RumbleGame() {
 
-    public void init() {
-        playerOne = new Player(1L);
-        playerTwo = new Player(2L);
+	}
 
-        Castle castleOne = new Castle();
-        Castle castleTwo = new Castle();
+	public void init() {
+		playerOne = new Player(1L);
+		playerTwo = new Player(2L);
 
-        Path westPath = new Path();
-        Path eastPath = new Path();
+		Castle castleOne = new Castle();
+		Castle castleTwo = new Castle();
 
-        castleOne.setEastPath(eastPath);
-        castleOne.setWestPath(westPath);
+		Path westPath = new Path();
+		Path eastPath = new Path();
 
-        castleTwo.setEastPath(eastPath);
-        castleTwo.setWestPath(westPath);
+		castleOne.setEastPath(eastPath);
+		castleOne.setWestPath(westPath);
 
-        playerOne.setCastle(castleOne);
-        playerTwo.setCastle(castleTwo);
+		castleTwo.setEastPath(eastPath);
+		castleTwo.setWestPath(westPath);
 
-        segundaEvaluacionUI = new SegundaEvaluacionUI();
-        segundaEvaluacionUI.init().setVisible(true);
+		playerOne.setCastle(castleOne);
+		playerTwo.setCastle(castleTwo);
 
-        PathBox box15 = new PathBox(segundaEvaluacionUI.getButton(0), "Noroeste");
-        PathBox box27 = new PathBox(segundaEvaluacionUI.getButton(2), "Oeste");
-        PathBox box39 = new PathBox(segundaEvaluacionUI.getButton(4), "Suroeste");
+		segundaEvaluacionUI = new SegundaEvaluacionUI();
+		segundaEvaluacionUI.init().setVisible(true);
 
-        box15.setNorthBox(null);
-        box15.setSouthBox(box27);
+		PathBox box15 = new PathBox(segundaEvaluacionUI.getButton(0), "Noroeste");
+		PathBox box27 = new PathBox(segundaEvaluacionUI.getButton(2), "Oeste");
+		PathBox box39 = new PathBox(segundaEvaluacionUI.getButton(4), "Suroeste");
 
-        box27.setNorthBox(box15);
-        box27.setSouthBox(box39);
+		box15.setNorthBox(null);
+		box15.setSouthBox(box27);
 
-        box39.setNorthBox(box27);
-        box39.setSouthBox(null);
+		box27.setNorthBox(box15);
+		box27.setSouthBox(box39);
 
-        westPath.getPathBoxes().add(box15);
-        westPath.getPathBoxes().add(box27);
-        westPath.getPathBoxes().add(box39);
+		box39.setNorthBox(box27);
+		box39.setSouthBox(null);
 
-        PathBox box17 = new PathBox(segundaEvaluacionUI.getButton(1), "Noreste");
-        PathBox box29 = new PathBox(segundaEvaluacionUI.getButton(3), "Este");
-        PathBox box41 = new PathBox(segundaEvaluacionUI.getButton(5), "Sureste");
+		westPath.getPathBoxes().add(box15);
+		westPath.getPathBoxes().add(box27);
+		westPath.getPathBoxes().add(box39);
 
-        box17.setNorthBox(null);
-        box17.setSouthBox(box29);
+		PathBox box17 = new PathBox(segundaEvaluacionUI.getButton(1), "Noreste");
+		PathBox box29 = new PathBox(segundaEvaluacionUI.getButton(3), "Este");
+		PathBox box41 = new PathBox(segundaEvaluacionUI.getButton(5), "Sureste");
 
-        box29.setNorthBox(box17);
-        box29.setSouthBox(box41);
+		box17.setNorthBox(null);
+		box17.setSouthBox(box29);
 
-        box41.setNorthBox(box29);
-        box41.setSouthBox(null);
+		box29.setNorthBox(box17);
+		box29.setSouthBox(box41);
 
-        eastPath.getPathBoxes().add(box17);
-        eastPath.getPathBoxes().add(box29);
-        eastPath.getPathBoxes().add(box41);
+		box41.setNorthBox(box29);
+		box41.setSouthBox(null);
 
-        castleOne.setLifeLabel(segundaEvaluacionUI.getVidasPlayerOneLabel());
-        castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
-    }
+		eastPath.getPathBoxes().add(box17);
+		eastPath.getPathBoxes().add(box29);
+		eastPath.getPathBoxes().add(box41);
 
-    public void nextRound() {
-        System.out.println();
-        System.out.println();
-        System.out.println("Siguiente Ronda numero: " + round);
-        int jugador = RandomGenerator.getInstance().nextPlayer();
-        System.out.println("Mueve primero el Jugador numero " + jugador);
-        if(jugador == 1) {
-            playerOne.nextRound();
-            playerTwo.nextRound();
-        } else {
-            playerTwo.nextRound();
-            playerOne.nextRound();
-        }
-        segundaEvaluacionUI.refresh();
-        round++;
-        if(playerOne.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Azul!!!         ****");
-            loopGame = false;
-        }
-        if(playerTwo.getCastle().getCastleLife() <= 0) {
-            System.out.println("****         Ganador el Jugador Rojo!!!         ****");
-            loopGame = false;
-        }
-        if(round == 100) {
-            loopGame = false;
-        }
-    }
+		castleOne.setLifeLabel(segundaEvaluacionUI.getVidasPlayerOneLabel());
+		castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
+	}
 
-    public void startGame() {
-        while(loopGame) {
-            try {
-                Thread.sleep(1500);
-                this.nextRound();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        //TODO: Colocar una ventana modal con un mensaje que indique el resultado
+	public void nextRound() throws DrawException, RoundException {
+		System.out.println();
+		System.out.println();
+		System.out.println("Siguiente Ronda numero: " + round);
+		int jugador = RandomGenerator.getInstance().nextPlayer();
+		System.out.println("Mueve primero el Jugador numero " + jugador);
+		if (jugador == 1) {
+			playerOne.nextRound();
+			playerTwo.nextRound();
+		} else {
+			playerTwo.nextRound();
+			playerOne.nextRound();
+		}
+		segundaEvaluacionUI.refresh();
+		round++;
+		if (playerOne.getCastle().getCastleLife() <= 0) {
+			messageFinal = "****         Ganador el Jugador Azul!!!         ****";
+			loopGame = false;
+		}
+		if (playerTwo.getCastle().getCastleLife() <= 0) {
+			messageFinal = "****         Ganador el Jugador Rojo!!!         ****";
+			loopGame = false;
+		}
+		if (round == 100) {
+			loopGame = false;
+			throw new RoundException();
 
-        System.exit(0);
-    }
+		}
+		if (playerOne.isRemainingMonsters() && playerTwo.isRemainingMonsters() && loopGame) {
+			loopGame = false;
+			throw new DrawException();
+		}
+	}
+
+	public void startGame() {
+		while (loopGame) {
+			try {
+				Thread.sleep(1500);
+				this.nextRound();
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			} catch (DrawException e) {
+				messageFinal = "****       Al acabarse los monstrous, Hubo EMPATE    ****";
+			} catch (RoundException e) {
+				messageFinal = "****       Al acabarse la ronda, Hubo EMPATE    ****";
+			}
+		}
+
+		new VentanaPopup(messageFinal);
+
+	}
 }

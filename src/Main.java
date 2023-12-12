@@ -14,36 +14,31 @@ public class Main {
 				new IceBeast("Ice Beast"), new Spartan("Spartan 24"), new Spartan("Spartan 224"),
 				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
 				new Spartan("Spartan 15"));
-/*
- * CREAMOS DOS VARIABLES RANDOM,
- * UNA PARA CADA EQUIPO
- */
-		Random random1 = new Random();
-		Random random  = new Random();
-/*
- * EN AMBOS EQUIPOS
- * MOSTRAMOS TODOS LOS ORDENES,
- * SELECCIONAMOS UN ORDEN ALEATORIO Y LO DEJAMOS ESTABLECIDO.		
- */
-		
-		rumbleGame.getPlayerOne().setMonsters(monstersOne);
-		
-		mostrarTodosLosOrdenes(monstersOne);
-
-		System.out.println("Orden Jugador 1:");
-		
-		seleccionarOrdenRandom(random, monstersOne);
 
 		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
 
+		/*
+		 * EN AMBOS EQUIPOS MOSTRAMOS TODOS LOS ORDENES, SELECCIONAMOS UN ORDEN
+		 * ALEATORIO Y LO DEJAMOS ESTABLECIDO.
+		 */
+
+		mostrarTodosLosOrdenes(monstersOne);
+
 		mostrarTodosLosOrdenes(monstersTwo);
+
+		System.out.println("Orden Jugador 1:");
+
+		seleccionarOrdenRandom(new Random(), monstersOne);
 
 		System.out.println("Orden Jugador 2:");
 
-		seleccionarOrdenRandom(random1, monstersTwo);
+		seleccionarOrdenRandom(new Random(), monstersTwo);
+
 		/*
 		 * A PARTIR DE ACA COMIENZA EL JUEGO
 		 */
+
+		rumbleGame.getPlayerOne().setMonsters(monstersOne);
 
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
@@ -76,7 +71,7 @@ public class Main {
 		System.out.println("Monstruos sin Orden \n");
 		mostrarListaDeMonstruos(monsters);
 
-		System.out.println("Monstruos por vida");
+		System.out.println("Monstruos por vida \n");
 		Collections.sort(monsters, new ComparatorLife());
 		mostrarListaDeMonstruos(monsters);
 

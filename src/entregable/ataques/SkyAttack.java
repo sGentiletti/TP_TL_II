@@ -1,11 +1,12 @@
-package game.attacks;
+package entregable.ataques;
 
 import game.components.Monster;
 
-public class Curse implements Demon {
+public class SkyAttack implements Flying {
 
 	@Override
 	public int damage(Monster monster) {
-		return 500;
+		return 150;
 	}
+
 }

@@ -5,8 +5,8 @@ import game.random.RandomGenerator;
 
 public class IceSpike implements Cold {
 
-    @Override
-    public int damage(Monster monster) {
-        return RandomGenerator.getInstance().calculateDamage(0, 200);
-    }
+	@Override
+	public int damage(Monster monster) {
+		return RandomGenerator.getInstance().calculateDamage(0, 200);
+	}
 }
