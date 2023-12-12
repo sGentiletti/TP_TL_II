@@ -40,19 +40,19 @@ public class Zapdos extends Monster {
 
 	@Override
 	public void attack(Monster monster) {
-		monster.onDamageReceive(this.activeSkill.damage(monster), this);
-		changeActiveSkill();
+		monster.onDamageReceive(this.getActiveSkill().damage(monster), this);
+		this.changeActiveSkill();
 	}
 
 	@Override
 	public void move(PathBox oldPathBox, PathBox newPathBox) {
 		super.move(oldPathBox, newPathBox);
-		changeActiveSkill();
+		this.changeActiveSkill();
 	}
 
 	private void changeActiveSkill() {
 		this.activeSkill = skills.get(random.nextInt(3));
 		System.out.println(
-				this + " prepara " + this.activeSkill.getClass().getSimpleName() + " para su siguiente ataque");
+				this + " prepara " + this.getActiveSkill().getClass().getSimpleName() + " para su siguiente ataque");
 	}
 }

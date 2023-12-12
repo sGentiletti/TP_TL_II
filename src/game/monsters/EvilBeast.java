@@ -16,6 +16,6 @@ public class EvilBeast extends Monster {
 
 	@Override
 	public void attack(Monster enemy) {
-		enemy.onDamageReceive(this.activeSkill.damage(enemy), this);
+		enemy.onDamageReceive(this.getActiveSkill().damage(enemy), this);
 	}
 }

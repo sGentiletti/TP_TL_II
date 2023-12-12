@@ -12,7 +12,7 @@ public class VentanaPopup {
 	private Dimension dmVentana = new Dimension(600, 200);
 	private JButton boton = new JButton("OK");
 
-	public VentanaPopup(String sss) {
+	public VentanaPopup(String msj) {
 		Dimension dmPantalla = Toolkit.getDefaultToolkit().getScreenSize();
 		int x = (dmPantalla.width - dmVentana.width) / 2;
 		int y = (dmPantalla.height - dmVentana.height) / 2;
@@ -27,7 +27,7 @@ public class VentanaPopup {
 		frame.setContentPane(panel);
 		panel.setLayout(null);
 
-		JLabel lblLabel = new JLabel(sss);
+		JLabel lblLabel = new JLabel(msj);
 		lblLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLabel.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		lblLabel.setBounds(42, 30, 555, 49);

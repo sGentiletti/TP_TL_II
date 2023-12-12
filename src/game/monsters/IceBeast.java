@@ -22,13 +22,13 @@ public class IceBeast extends Monster {
 
 	@Override
 	public void attack(Monster monster) {
-		monster.onDamageReceive(this.activeSkill.damage(monster), this);
+		monster.onDamageReceive(this.getActiveSkill().damage(monster), this);
 	}
 
 	@Override
 	public void move(PathBox oldPathBox, PathBox newPathBox) {
 		super.move(oldPathBox, newPathBox);
-		if (activeSkill instanceof ColdBreath) {
+		if (this.getActiveSkill() instanceof ColdBreath) {
 			this.activeSkill = skills.get(1);
 		} else {
 			this.activeSkill = skills.get(0);

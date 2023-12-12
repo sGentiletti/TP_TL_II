@@ -116,7 +116,6 @@ public class RumbleGame {
 		if (round == 100) {
 			loopGame = false;
 			throw new RoundException();
-
 		}
 		if (playerOne.isRemainingMonsters() && playerTwo.isRemainingMonsters() && loopGame) {
 			loopGame = false;

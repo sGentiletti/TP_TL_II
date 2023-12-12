@@ -20,7 +20,7 @@ public class FuryFish extends Monster {
 
 	@Override
 	public void attack(Monster monster) {
-		monster.onDamageReceive(this.activeSkill.damage(monster), this);
+		monster.onDamageReceive(this.getActiveSkill().damage(monster), this);
 	}
 
 }

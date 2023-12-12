@@ -23,13 +23,8 @@ public class Main {
 				new ThornyFlora("Thorny Flora 3 - J2"), new ThornyFlora("Thorny Flora 4 - J2"));
 
 		/*
-		 * EN AMBOS EQUIPOS MOSTRAMOS TODOS LOS ORDENES, SELECCIONAMOS UN ORDEN
-		 * ALEATORIO Y LO DEJAMOS ESTABLECIDO.
+		 * SELECCIONAMOS UN ORDEN ALEATORIO Y LO DEJAMOS ESTABLECIDO.
 		 */
-
-		mostrarTodosLosOrdenes(monstersOne);
-
-		mostrarTodosLosOrdenes(monstersTwo);
 
 		System.out.println("Orden Jugador 1:");
 
@@ -48,6 +43,15 @@ public class Main {
 		rumbleGame.getPlayerTwo().setMonsters(monstersTwo);
 
 		rumbleGame.startGame();
+
+		/*
+		 * SE PUEDEN DESCOMENTAR LAS SIGUENTES LINEAS PARA MOSTRAR POR CONSOLA TODOS LOS
+		 * ORDENES POSIBLES
+		 */
+
+		// mostrarTodosLosOrdenes(monstersOne);
+
+		// mostrarTodosLosOrdenes(monstersTwo);
 	}
 
 	private static List<Monster> seleccionarOrdenRandom(Random random, List<Monster> monsters) {
