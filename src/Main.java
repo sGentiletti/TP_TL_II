@@ -1,6 +1,8 @@
 import java.util.*;
+
 import game.components.*;
 import game.monsters.*;
+import entregable.monstruos.*;
 import game.components.comparators.*;
 
 public class Main {
@@ -8,14 +10,17 @@ public class Main {
 		RumbleGame rumbleGame = RumbleGame.getInstance();
 		rumbleGame.init();
 
-		List<Monster> monstersOne = Arrays.asList(new Spartan("Spartan 1"), new Spartan("Spartan 2"),
-				new Spartan("Spartan 3"), new Spartan("Spartan 4"), new Spartan("Spartan 5"), new Spartan("Spartan 6"),
-				new Spartan("Spartan 7"), new Spartan("Spartan 8"), new Spartan("Spartan 9"), new Spartan("Spartan 10"),
-				new IceBeast("Ice Beast"), new Spartan("Spartan 24"), new Spartan("Spartan 224"),
-				new Spartan("Spartan 34"), new Spartan("Spartan 44"), new Spartan("Spartan 64"),
-				new Spartan("Spartan 15"));
+		List<Monster> monstersOne = Arrays.asList(new Spartan("Spartan 1 - J1"), new EvilBeast("EvilBeast 1 - J1"),
+				new EvilBeast("EvilBeast 2 - J1"), new Zapdos("Zapdos 1 - J1"), new IceBeast("Ice Beast 1 - J1"),
+				new FuryFish("Fury Fish 1 - J1"), new Spartan("Spartan 2 - J1"), new ThornyFlora("Thorny Flora 1 - J1"),
+				new FuryFish("Fury Fish 2 - J1"), new Zapdos("Zapdos 2 - J1"), new IceBeast("Ice Beast 2 - J1"),
+				new ThornyFlora("Thorny Flora 2 - J1"), new EvilBeast("EvilBeast 3 - J1"));
 
-		List<Monster> monstersTwo = Arrays.asList(new Spartan("Spartan A"), new Spartan("Spartan B"));
+		List<Monster> monstersTwo = Arrays.asList(new ThornyFlora("Thorny Flora 1 - J2"), new Spartan("Spartan 1 - J2"),
+				new EvilBeast("EvilBeast 1 - J2"), new Spartan("Spartan 2 - J2"), new Zapdos("Zapdos 1 - J2"),
+				new IceBeast("Ice Beast 1 - J2"), new IceBeast("Ice Beast 2 - J2"), new FuryFish("Fury Fish 1 - J2"),
+				new Spartan("Spartan 3 - J2"), new ThornyFlora("Thorny Flora 2 - J2"), new FuryFish("Fury Fish 2 - J2"),
+				new ThornyFlora("Thorny Flora 3 - J2"), new ThornyFlora("Thorny Flora 4 - J2"));
 
 		/*
 		 * EN AMBOS EQUIPOS MOSTRAMOS TODOS LOS ORDENES, SELECCIONAMOS UN ORDEN
