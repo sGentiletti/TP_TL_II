@@ -12,7 +12,7 @@ public class FuryFish extends Monster {
 	private List<Water> skills = Arrays.asList(new HydroCannon());
 
 	public FuryFish(String name) {
-		this.life = 800;
+		super(800, name);
 		this.monsterName = name;
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.WATER);

@@ -8,17 +8,16 @@ import game.types.Type;
 
 public class Spartan extends Monster {
 
-    public Spartan(String name) {
-        this.life = 500;
-        this.activeSkill = new Slice();
-        this.monsterName = name;
-        this.types = Arrays.asList(Type.SWORD);
-    }
+	public Spartan(String name) {
+		super(500, name);
+		this.activeSkill = new Slice();
+		this.types = Arrays.asList(Type.SWORD);
+	}
 
-    @Override
-    public void attack(Monster enemy) {
-        int damage = this.activeSkill.damage(enemy);
-        System.out.println("--     ["+ this +"] ataca a [" + enemy + "] haciendole " + damage + " de daño");
-        enemy.onDamageReceive(damage, this);
-    }
+	@Override
+	public void attack(Monster enemy) {
+		int damage = this.activeSkill.damage(enemy);
+		System.out.println("--     [" + this + "] ataca a [" + enemy + "] haciendole " + damage + " de daño");
+		enemy.onDamageReceive(damage, this);
+	}
 }

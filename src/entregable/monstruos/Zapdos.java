@@ -15,7 +15,7 @@ public class Zapdos extends Monster {
 	private Random random = new Random();
 
 	public Zapdos(String name) {
-		this.life = 1000;
+		super(1000, name);
 		this.monsterName = name;
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.ELECTRIC, Type.FLYING);

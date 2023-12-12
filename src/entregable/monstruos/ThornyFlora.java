@@ -13,7 +13,7 @@ public class ThornyFlora extends Monster {
 	private List<Plant> skills = Arrays.asList(new RazorLeaf());
 
 	public ThornyFlora(String name) {
-		this.life = 400;
+		super(400, name);
 		this.monsterName = name;
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.PLANT);

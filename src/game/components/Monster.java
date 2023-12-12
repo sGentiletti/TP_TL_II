@@ -12,6 +12,12 @@ public abstract class Monster {
 	private Player player;
 	protected String monsterName;
 	protected List<Type> types;
+	private Integer inicialDamage = null;
+
+	public Monster(Integer life, String monsterName) {
+		this.life = life;
+		this.monsterName = monsterName;
+	}
 
 	public abstract void attack(Monster monster);
 
@@ -26,6 +32,30 @@ public abstract class Monster {
 	public void move(PathBox oldPathBox, PathBox newPathBox) {
 		oldPathBox.setMonster(null);
 		newPathBox.setMonster(this);
+	}
+	
+	/*
+	 * GENERAMOS UN INICIAL-DAMAGE, 
+	 * EN EL CUAL OBTENEMOS UN DAÑO PRINCIPAL,
+	 * DE OTRO MODO SIEMPRE SE CREA UN DAÑO CADA VEZ
+	 * QUE QUEREMOS ACCEDER AL DAÑO
+	 * CON ESTE CRITERIO VAMOS A ESTABLECER EL ORDEN DE 
+	 * UNA LISTA.
+	 */
+
+	public int getInicialDamage() {
+		if (this.inicialDamage == null) {
+			this.inicialDamage = activeSkill.damage(this);
+		}
+		return this.inicialDamage;
+	}
+
+	public String getMonsterName() {
+		return monsterName;
+	}
+
+	public Attack getActiveSkill() {
+		return activeSkill;
 	}
 
 	public Integer getLife() {
@@ -42,10 +72,6 @@ public abstract class Monster {
 
 	public List<Type> getTypes() {
 		return types;
-	}
-
-	public Attack getActiveSkill() {
-		return activeSkill;
 	}
 
 	@Override
