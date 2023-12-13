@@ -10,10 +10,11 @@ import game.components.Monster;
 import game.types.Type;
 
 public class ThornyFlora extends Monster {
+	private static Long serialThornyFlora = 301L;
 	private List<Plant> skills = Arrays.asList(new RazorLeaf());
 
 	public ThornyFlora(String name) {
-		super(400, name);
+		super(400, name, serialThornyFlora);
 		this.monsterName = name;
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.PLANT);

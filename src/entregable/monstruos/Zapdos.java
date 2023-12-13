@@ -11,11 +11,12 @@ import game.components.PathBox;
 import game.types.Type;
 
 public class Zapdos extends Monster {
+	private static Long serialZapdos = 302L;
 	private List<Attack> skills = Arrays.asList(new ThunderShock(), new SkyAttack(), new DragonRush());
 	private Random random = new Random();
 
 	public Zapdos(String name) {
-		super(1000, name);
+		super(1000, name, serialZapdos);
 		this.monsterName = name;
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.ELECTRIC, Type.FLYING);

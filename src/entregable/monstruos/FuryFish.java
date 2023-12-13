@@ -9,11 +9,11 @@ import game.components.Monster;
 import game.types.Type;
 
 public class FuryFish extends Monster {
+	private static Long serialFury = 300L;
 	private List<Water> skills = Arrays.asList(new HydroCannon());
 
 	public FuryFish(String name) {
-		super(800, name);
-		this.monsterName = name;
+		super(800, name, serialFury);
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.WATER);
 	}

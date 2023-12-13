@@ -7,9 +7,10 @@ import game.components.Monster;
 import game.types.Type;
 
 public class Spartan extends Monster {
+	private static Long serialSpartan = 303L;
 
 	public Spartan(String name) {
-		super(500, name);
+		super(500, name, serialSpartan);
 		this.activeSkill = new Slice();
 		this.types = Arrays.asList(Type.SWORD);
 	}

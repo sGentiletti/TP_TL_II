@@ -8,10 +8,10 @@ public class PathBox {
 	private PathBox southBox;
 	private PathBox northBox;
 	private String name;
-	private JButton buttonUI;
+	private JLabel labelUI;
 
-	public PathBox(JButton buttonUI, String name) {
-		this.buttonUI = buttonUI;
+	public PathBox(JLabel labelUI, String name) {
+		this.labelUI = labelUI;
 		this.name = name;
 	}
 
@@ -27,12 +27,12 @@ public class PathBox {
 		this.monster = monster;
 	}
 
-	public JButton getButtonUI() {
-		return buttonUI;
+	public JLabel getLabelUI() {
+		return labelUI;
 	}
 
-	public void setButtonUI(JButton buttonUI) {
-		this.buttonUI = buttonUI;
+	public void setButtonUI(JLabel labelUI) {
+		this.labelUI = labelUI;
 	}
 
 	public PathBox getSouthBox() {
@@ -53,17 +53,24 @@ public class PathBox {
 
 	public void update() {
 		if (this.monster != null) {
-			buttonUI.setVisible(true);
-			buttonUI.setText(monster.toString());
+			labelUI.setVisible(true);    
+			//labelUI.setText(monster.toString());  
+			if(monster.getSerialMonster() == 300L) {
+				labelUI.setIcon(new ImageIcon(getClass().getResource("/imagens/pescado.png")));
+			}else if(monster.getSerialMonster() == 302L){
+				labelUI.setIcon(new ImageIcon(getClass().getResource("/imagens/zapdos.png")));
+			}else {
+				labelUI.setIcon(new ImageIcon(getClass().getResource("/imagens/prueba.png")));
+			}
 			if (monster.getPlayer().getId().equals(1L)) {
-				buttonUI.setBackground(new Color(123, 179, 252));
+				labelUI.setBackground(new Color(123, 179, 252));
 			} else {
-				buttonUI.setBackground(new Color(231, 123, 123));
+				labelUI.setBackground(new Color(231, 123, 123));
 			}
 		} else {
-			buttonUI.setVisible(false);
-			buttonUI.setText("");
-			buttonUI.setBackground(Color.WHITE);
+			labelUI.setVisible(false);
+			labelUI.setText("");
+			labelUI.setBackground(Color.WHITE);
 		}
 	}
 

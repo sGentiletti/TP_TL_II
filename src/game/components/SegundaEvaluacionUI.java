@@ -12,6 +12,8 @@ public class SegundaEvaluacionUI extends JFrame {
 	private List<JPanel> panelList = new ArrayList<>();
 
 	private List<JButton> buttons = new ArrayList<>();
+	
+	private List<JLabel> labels = new ArrayList<>();
 
 	private JLabel label1;
 
@@ -24,6 +26,10 @@ public class SegundaEvaluacionUI extends JFrame {
 		setTitle("Segunda Evaluacion");
 		setSize(600, 900);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Image icon = new ImageIcon(getClass().getResource("/imagens/pokebola.png")).getImage();
+		setIconImage(icon);
+		
 		GridLayout gridLayout = new GridLayout(20, 3);
 		panelList.forEach(SegundaEvaluacionUI.this::add);
 
@@ -32,52 +38,52 @@ public class SegundaEvaluacionUI extends JFrame {
 		return this;
 	}
 
-	public JButton getButton(int index) {
-		return buttons.get(index);
+	public JLabel getLabel(int index) {
+		return labels.get(index);
 	}
 
 	private void addButtons() {
-		JButton button15 = new JButton();
+		JLabel label15 = new JLabel();
 		panelList.get(15).setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panelList.get(15).add(button15);
-		button15.setText("15");
-		button15.setVisible(false);
-		buttons.add(button15);
+		panelList.get(15).add(label15);
+		label15.setText("15");
+		label15.setVisible(false);
+		labels.add(label15);
 
-		JButton button17 = new JButton();
+		JLabel label17 = new JLabel();
 		panelList.get(17).setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelList.get(17).add(button17);
-		button17.setText("17");
-		button17.setVisible(false);
-		buttons.add(button17);
+		panelList.get(17).add(label17);
+		label17.setText("17");
+		label17.setVisible(false);
+		labels.add(label17);
 
-		JButton button27 = new JButton();
+		JLabel label27 = new JLabel();
 		panelList.get(27).setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panelList.get(27).add(button27);
-		button27.setText("27");
-		button27.setVisible(false);
-		buttons.add(button27);
+		panelList.get(27).add(label27);
+		label27.setText("27");
+		label27.setVisible(false);
+		labels.add(label27);
 
-		JButton button29 = new JButton();
+		JLabel label29 = new JLabel();
 		panelList.get(29).setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelList.get(29).add(button29);
-		button29.setText("29");
-		button29.setVisible(false);
-		buttons.add(button29);
+		panelList.get(29).add(label29);
+		label29.setText("29");
+		label29.setVisible(false);
+		labels.add(label29);
 
-		JButton button39 = new JButton();
+		JLabel label39 = new JLabel();
 		panelList.get(39).setLayout(new FlowLayout(FlowLayout.RIGHT));
-		panelList.get(39).add(button39);
-		button39.setText("39");
-		button39.setVisible(false);
-		buttons.add(button39);
+		panelList.get(39).add(label39);
+		label39.setText("39");
+		label39.setVisible(false);
+		labels.add(label39);
 
-		JButton button41 = new JButton();
+		JLabel label41 = new JLabel();
 		panelList.get(41).setLayout(new FlowLayout(FlowLayout.LEFT));
-		panelList.get(41).add(button41);
-		button41.setText("41");
-		button41.setVisible(false);
-		buttons.add(button41);
+		panelList.get(41).add(label41);
+		label41.setText("41");
+		label41.setVisible(false);
+		labels.add(label41);
 
 		label1 = new JLabel();
 		label1.setText("Vidas: 3");

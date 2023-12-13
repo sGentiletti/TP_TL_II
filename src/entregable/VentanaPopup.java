@@ -22,6 +22,9 @@ public class VentanaPopup {
 		frame.setLocation(x, y);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
+		Image icon = new ImageIcon(getClass().getResource("/imagens/pokebola.png")).getImage();
+		frame.setIconImage(icon);
+		
 		JPanel panel = new JPanel();
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		frame.setContentPane(panel);

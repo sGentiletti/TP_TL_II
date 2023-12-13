@@ -9,6 +9,7 @@ public class RumbleGame {
 	private Player playerOne;
 	private Player playerTwo;
 	private boolean loopGame = true;
+	private boolean winner = false;
 	private int round = 0;
 	private SegundaEvaluacionUI segundaEvaluacionUI;
 
@@ -52,9 +53,9 @@ public class RumbleGame {
 		segundaEvaluacionUI = new SegundaEvaluacionUI();
 		segundaEvaluacionUI.init().setVisible(true);
 
-		PathBox box15 = new PathBox(segundaEvaluacionUI.getButton(0), "Noroeste");
-		PathBox box27 = new PathBox(segundaEvaluacionUI.getButton(2), "Oeste");
-		PathBox box39 = new PathBox(segundaEvaluacionUI.getButton(4), "Suroeste");
+		PathBox box15 = new PathBox(segundaEvaluacionUI.getLabel(0), "Noroeste");
+		PathBox box27 = new PathBox(segundaEvaluacionUI.getLabel(2), "Oeste");
+		PathBox box39 = new PathBox(segundaEvaluacionUI.getLabel(4), "Suroeste");
 
 		box15.setNorthBox(null);
 		box15.setSouthBox(box27);
@@ -69,9 +70,9 @@ public class RumbleGame {
 		westPath.getPathBoxes().add(box27);
 		westPath.getPathBoxes().add(box39);
 
-		PathBox box17 = new PathBox(segundaEvaluacionUI.getButton(1), "Noreste");
-		PathBox box29 = new PathBox(segundaEvaluacionUI.getButton(3), "Este");
-		PathBox box41 = new PathBox(segundaEvaluacionUI.getButton(5), "Sureste");
+		PathBox box17 = new PathBox(segundaEvaluacionUI.getLabel(1), "Noreste");
+		PathBox box29 = new PathBox(segundaEvaluacionUI.getLabel(3), "Este");
+		PathBox box41 = new PathBox(segundaEvaluacionUI.getLabel(5), "Sureste");
 
 		box17.setNorthBox(null);
 		box17.setSouthBox(box29);
@@ -90,7 +91,7 @@ public class RumbleGame {
 		castleTwo.setLifeLabel(segundaEvaluacionUI.getVidasPlayerTwoLabel());
 	}
 
-	public void nextRound() throws DrawException, RoundException {
+	public void nextRound() throws DrawException, RoundException, PlayerException {
 		System.out.println();
 		System.out.println();
 		System.out.println("Siguiente Ronda numero: " + round);
@@ -106,12 +107,13 @@ public class RumbleGame {
 		segundaEvaluacionUI.refresh();
 		round++;
 		if (playerOne.getCastle().getCastleLife() <= 0) {
-			messageFinal = "****         Ganador el Jugador Azul!!!         ****";
 			loopGame = false;
+			winner = true;
+			throw new PlayerException();
 		}
 		if (playerTwo.getCastle().getCastleLife() <= 0) {
-			messageFinal = "****         Ganador el Jugador Rojo!!!         ****";
 			loopGame = false;
+			throw new PlayerException();
 		}
 		if (round == 100) {
 			loopGame = false;
@@ -130,6 +132,13 @@ public class RumbleGame {
 				this.nextRound();
 			} catch (InterruptedException e) {
 				throw new RuntimeException(e);
+			} catch (PlayerException e){
+				if(winner) {
+					messageFinal = "****         Ganador el Jugador Azul!!!         ****";
+				}else {
+					messageFinal = "****         Ganador el Jugador Rojo!!!         ****";
+				}
+				System.out.print("Gano el uno? RTA:" + winner);
 			} catch (DrawException e) {
 				messageFinal = "****       Al acabarse los monstrous, Hubo EMPATE    ****";
 			} catch (RoundException e) {

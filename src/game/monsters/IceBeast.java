@@ -11,11 +11,11 @@ import game.components.PathBox;
 import game.types.Type;
 
 public class IceBeast extends Monster {
-
+	private static Long serialIceBeast = 304L;
 	private List<Cold> skills = Arrays.asList(new ColdBreath(), new IceSpike());
 
 	public IceBeast(String name) {
-		super(200, name);
+		super(200, name, serialIceBeast);
 		this.activeSkill = skills.get(0);
 		this.types = Arrays.asList(Type.COLD, Type.BEAST);
 	}

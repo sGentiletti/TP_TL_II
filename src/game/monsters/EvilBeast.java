@@ -7,9 +7,10 @@ import game.components.Monster;
 import game.types.Type;
 
 public class EvilBeast extends Monster {
-
+	private static Long serialEvilBeast = 305L;
+	
 	public EvilBeast(String name) {
-		super(700, name);
+		super(700, name, serialEvilBeast);
 		this.activeSkill = new Curse();
 		this.types = Arrays.asList(Type.BEAST, Type.DEMON, Type.FIRE);
 	}

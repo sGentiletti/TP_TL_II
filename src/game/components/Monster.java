@@ -13,10 +13,13 @@ public abstract class Monster {
 	protected String monsterName;
 	protected List<Type> types;
 	private Integer inicialDamage = null;
+	private Long serialMonster;
+	
 
-	public Monster(Integer life, String monsterName) {
+	public Monster(Integer life, String monsterName, Long serialMonster) {
 		this.life = life;
 		this.monsterName = monsterName;
+		this.serialMonster = serialMonster;
 	}
 
 	public abstract void attack(Monster monster);
@@ -69,6 +72,10 @@ public abstract class Monster {
 
 	public List<Type> getTypes() {
 		return types;
+	}
+	
+	public Long getSerialMonster() {
+		return serialMonster;
 	}
 
 	@Override
